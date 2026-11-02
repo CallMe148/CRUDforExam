@@ -1,0 +1,550 @@
+openapi: 3.0.3
+info:
+  title: Book Catalog API
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /api/categories:
+    get:
+      operationId: apiCategoriesGET
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/Category"
+                type: array
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Invalid input or upload
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Duplicate or foreign key conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Server error
+      summary: GET /api/categories
+      tags:
+      - categories
+      x-eov-operation-handler: controllers/CategoriesController
+    post:
+      operationId: apiCategoriesPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/_api_categories_post_request"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Invalid input or upload
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Duplicate or foreign key conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Server error
+      summary: POST /api/categories
+      tags:
+      - categories
+      x-eov-operation-handler: controllers/CategoriesController
+  /api/categories/{id}:
+    delete:
+      operationId: apiCategoriesIdDELETE
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Invalid input or upload
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Duplicate or foreign key conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Server error
+      summary: "DELETE /api/categories/{id}"
+      tags:
+      - categories
+      x-eov-operation-handler: controllers/CategoriesController
+    get:
+      operationId: apiCategoriesIdGET
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Invalid input or upload
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Duplicate or foreign key conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Server error
+      summary: "GET /api/categories/{id}"
+      tags:
+      - categories
+      x-eov-operation-handler: controllers/CategoriesController
+    put:
+      operationId: apiCategoriesIdPUT
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/_api_categories_post_request"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Invalid input or upload
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Duplicate or foreign key conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Server error
+      summary: "PUT /api/categories/{id}"
+      tags:
+      - categories
+      x-eov-operation-handler: controllers/CategoriesController
+  /api/books:
+    get:
+      operationId: apiBooksGET
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/Book"
+                type: array
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Invalid input or upload
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Duplicate or foreign key conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Server error
+      summary: GET /api/books
+      tags:
+      - books
+      x-eov-operation-handler: controllers/BooksController
+    post:
+      operationId: apiBooksPOST
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/_api_books_post_request"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Book"
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Invalid input or upload
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Duplicate or foreign key conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Server error
+      summary: POST /api/books
+      tags:
+      - books
+      x-eov-operation-handler: controllers/BooksController
+  /api/books/{id}:
+    delete:
+      operationId: apiBooksIdDELETE
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Invalid input or upload
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Duplicate or foreign key conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Server error
+      summary: "DELETE /api/books/{id}"
+      tags:
+      - books
+      x-eov-operation-handler: controllers/BooksController
+    get:
+      operationId: apiBooksIdGET
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Book"
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Invalid input or upload
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Duplicate or foreign key conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Server error
+      summary: "GET /api/books/{id}"
+      tags:
+      - books
+      x-eov-operation-handler: controllers/BooksController
+    put:
+      operationId: apiBooksIdPUT
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/_api_books_post_request"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Book"
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Invalid input or upload
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Duplicate or foreign key conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Server error
+      summary: "PUT /api/books/{id}"
+      tags:
+      - books
+      x-eov-operation-handler: controllers/BooksController
+  /api/health:
+    get:
+      operationId: apiHealthGET
+      responses:
+        "200":
+          description: Database reachable
+        "500":
+          description: Database unavailable
+      x-eov-operation-handler: controllers/DefaultController
+components:
+  schemas:
+    Category:
+      example:
+        id: 0
+        name: name
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      type: object
+    Book:
+      example:
+        id: 0
+        title: title
+        author: author
+        price: price
+        category_id: 6
+        cover: cover
+        category_name: category_name
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        author:
+          type: string
+        price:
+          description: pg NUMERIC returns a string
+          type: string
+        category_id:
+          type: integer
+        cover:
+          nullable: true
+          type: string
+        category_name:
+          type: string
+      type: object
+    Error:
+      example:
+        error: error
+      properties:
+        error:
+          type: string
+      type: object
+    _api_categories_post_request:
+      properties:
+        name:
+          maxLength: 100
+          type: string
+      required:
+      - name
+      type: object
+    _api_books_post_request:
+      properties:
+        title:
+          maxLength: 200
+          type: string
+        author:
+          maxLength: 150
+          type: string
+        price:
+          maximum: 99999999.99
+          minimum: 0
+          multipleOf: 0.01
+          type: number
+        category_id:
+          minimum: 1
+          type: integer
+        cover:
+          description: "PNG/JPEG/WebP, maximum 2 MB"
+          format: binary
+          type: string
+        remove_cover:
+          description: "PUT only: remove existing cover if no new cover"
+          enum:
+          - "true"
+          - "false"
+          type: string
+      required:
+      - author
+      - category_id
+      - price
+      - title
+      type: object
