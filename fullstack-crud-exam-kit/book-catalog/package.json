@@ -1,0 +1,22 @@
+{
+  "name": "book-catalog",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "db:init": "node scripts/init-db.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "pg": "^8.16.0",
+    "multer": "^2.0.2",
+    "dotenv": "^17.2.0",
+    "swagger-ui-express": "^5.0.1"
+  }
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="th">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book Catalog · CRUD Practice</title>
+<link rel="stylesheet" href="style.css">
+
+<body>
+    <main>
+        <header>
+            <p>FULLSTACK EXAM PRACTICE</p>
+            <h1>📚 Book Catalog</h1><a href="/docs">ทดสอบ API ด้วย Swagger ↗</a>
+        </header>
+        <p id="status" role="status" aria-live="polite"></p>
+        <section>
+            <h2>หมวดหมู่</h2>
+            <form id="categoryForm"><input name="name" aria-label="ชื่อหมวดหมู่" placeholder="ชื่อหมวดหมู่" required
+                    maxlength="100"><button>บันทึก</button><button type="button"
+                    id="cancelCategory">ยกเลิกแก้ไข</button></form>
+            <ul id="categories"></ul>
+        </section>
+        <section>
+            <h2 id="formTitle">เพิ่มหนังสือ</h2>
+            <form id="bookForm">
+                <label>ชื่อหนังสือ<input name="title" required maxlength="200"></label>
+                <label>ผู้เขียน<input name="author" required maxlength="150"></label>
+                <label>ราคา<input name="price" type="number" min="0" max="99999999.99" step="0.01" value="0"
+                        required></label>
+                <label>หมวดหมู่<select name="category_id" required></select></label>
+                <label>ปก (PNG/JPEG/WebP ≤ 2 MB)<input name="cover" type="file"
+                        accept="image/png,image/jpeg,image/webp"></label>
+                <label><input type="checkbox" name="remove_cover" value="true"> ลบปกเดิม</label>
+                <div><button>บันทึกหนังสือ</button><button type="button" id="cancelBook">ยกเลิกแก้ไข</button></div>
+            </form>
+        </section>
+        <section>
+            <h2>รายการหนังสือ</h2>
+            <div id="books" class="grid"></div>
+        </section>
+    </main>
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
